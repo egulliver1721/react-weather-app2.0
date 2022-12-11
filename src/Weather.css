@@ -82,6 +82,10 @@ input:focus {
   vertical-align: middle;
 }
 
+.IconSmall {
+  width: 40px;
+}
+
 .CurrentTemperature {
   font-size: 150px;
 }
