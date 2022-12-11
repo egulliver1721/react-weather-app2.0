@@ -111,3 +111,19 @@ input:focus {
 .Capitalise {
   text-transform: uppercase;
 }
+
+.Metric {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.Metric a {
+  text-decoration: none;
+  transition: all 150ms ease-in-out;
+  color: coral;
+}
+
+.Metric a:hover {
+  font-weight: 600;
+  color: coral;
+}

@@ -42,9 +42,9 @@ export default function WeatherInfo(props) {
           </div>
         </div>
         <div className="Box CelciusConversion">
-          <div>C°</div>
+          <div className="Metric">C°</div>
           <span> | </span>
-          <div>
+          <div className="Metric">
             {" "}
             <a href="/" onClick={convertToFarenheit}>
               F°
@@ -75,14 +75,14 @@ export default function WeatherInfo(props) {
           </div>
         </div>
         <div className="Box CelciusConversion">
-          <div>
+          <div className="Metric">
             {" "}
             <a href="/" onClick={convertToCelcius}>
               C°
             </a>
           </div>
           <span> | </span>
-          <div>F°</div>
+          <div className="Metric">F°</div>
         </div>
       </div>
     );
