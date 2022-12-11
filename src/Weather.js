@@ -1,7 +1,16 @@
 import React from "react";
 import "./Weather.css";
+import axios from "axios";
 
 export default function Weather() {
+  function handleResponse(response) {
+    console.log(response);
+  }
+
+  const apiKey = "b4ffb413431b5d4406b3ot5c80af963a";
+  let city = "Perth";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+  axios.get(apiUrl).then(handleResponse);
   return (
     <div className="Weather">
       <div className="Box Centered">
