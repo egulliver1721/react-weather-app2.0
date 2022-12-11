@@ -1,0 +1,48 @@
+.Weather {
+  max-width: 900px;
+  border: 1px solid black;
+  margin: 0 auto;
+  margin-top: 100px;
+  padding: 30px;
+}
+
+.Box {
+  display: flex;
+  justify-content: center;
+  max-width: 800px;
+}
+
+h1 {
+  text-align: center;
+  display: inline;
+  width: 419px;
+}
+
+.Centered {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ListStyle {
+  list-style: none;
+  padding: 0;
+}
+
+.SearchForm {
+  padding: 0;
+  margin: 0 auto;
+  text-align: center;
+  width: 900px;
+}
+
+.InputForm {
+  margin: 0 auto;
+  display: inline;
+  border: none;
+  width: 419px;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
