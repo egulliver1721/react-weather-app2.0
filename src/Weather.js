@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import "./Weather.css";
 import axios from "axios";
+import WeatherInfo from "./WeatherInfo.js";
+import WeatherForecast from "./WeatherForecast.js";
+import Conversion from "./Conversion.js";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -9,9 +12,13 @@ export default function Weather(props) {
   function handleResponse(response) {
     setWeatherData({
       ready: true,
+      name: response.data.city,
       temperature: response.data.temperature.current,
       humidity: response.data.temperature.humidity,
       wind: response.data.wind.speed,
+      description: response.data.condition.description,
+      date: new Date(response.data.time * 1000),
+      icon: `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`,
     });
   }
 
@@ -38,70 +45,14 @@ export default function Weather(props) {
             <input
               className="InputForm"
               type="search"
-              placeholder="Enter a city..."
+              placeholder="Perth"
               onChange={handleCityChange}
             />
-            <input type="submit" />
+            <input type="submit" className="SearchButton" />
           </form>
         </div>
-        <div className="CurrentWeather">
-          <div className="row">
-            <div className="col-4 Icon Centered">🌧</div>
-            <div className="col-4 CurrentTemperature Centered">
-              {Math.round(weatherData.temperature)}°
-            </div>
-            <div className="col-4 WeatherInformation">
-              <ul className="ListStyle">
-                <li>🌫 {Math.round(weatherData.wind)} km/h</li>
-                <li>☂ 0%</li>
-                <li>💧 {weatherData.humidity}%</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div className="Forecast">
-          <div className="row Centered">
-            <div className="col-3">
-              <ul className="ListStyle">
-                <li>Mon</li>
-                <li>🌧</li>
-                <li>13°</li>
-              </ul>
-            </div>
-            <div className="col-3">
-              <ul className="ListStyle">
-                <li>Tues</li>
-                <li>🌧</li>
-                <li>13°</li>
-              </ul>
-            </div>
-            <div className="col-3">
-              <ul className="ListStyle">
-                <li>Wed</li>
-                <li>🌧</li>
-                <li>13°</li>
-              </ul>
-            </div>
-            <div className="col-3">
-              <ul className="ListStyle">
-                <li>Thurs</li>
-                <li>🌧</li>
-                <li>13°</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div className="Box CelciusConversion">
-          <div>
-            {" "}
-            <a href="/">C°</a>
-          </div>
-          <div> | </div>
-          <div>
-            {" "}
-            <a href="/">F°</a>
-          </div>
-        </div>
+        <WeatherInfo data={weatherData} />
+        <WeatherForecast code={weatherData.icon} />
       </div>
     );
   } else {
