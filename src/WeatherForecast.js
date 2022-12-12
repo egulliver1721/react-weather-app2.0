@@ -21,7 +21,7 @@ export default function WeatherForecast(props) {
     return (
       <div className="Forecast">
         <div className="row Centered">
-          {forecastData.forEach(function (dailyForecast, index) {
+          {forecastData.map(function (dailyForecast, index) {
             if (index < 4) {
               return (
                 <div className="col-3" key={index}>
